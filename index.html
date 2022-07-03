@@ -11,14 +11,6 @@
         * {
             font-family: 'Sigmar One', cursive;
         }
-
-        #triangle-right {
-            width: 0;
-            height: 0;
-            border-top: 10px solid transparent;
-            border-left: 20px solid rgb(20, 199, 175);
-            border-bottom: 10px solid transparent;
-        }
         
         .menu a, .menu-bottom a {
             color: #576F72;
@@ -30,8 +22,32 @@
             color: rgb(14, 170, 209);
         }
 
+        .parent-box {
+            opacity: .8;
+        }
+
+        .parent-box:hover {
+            border: 1px solid black;
+        }
+
+        .parent-box:hover, .parent-box:hover .delete {
+            display: block;
+            opacity: 1;
+        }
+        .delete {
+            display: none;
+        }
         .delete:hover {
             color: red;
+            cursor: pointer;
+        }
+
+        .task-name {
+            cursor: pointer;
+        }
+
+        .completed {
+            text-decoration: line-through 3px;
         }
     </style>
     <title>todo list</title>
@@ -52,9 +68,9 @@
         <div class="menu-bottom w-50 mx-auto p-2 d-flex justify-content-between border rounded-bottom">
             <a class="todo-total w-25 ms-1 text-decoration-none">0 tasks left</a>
             <div class="menu">
-                <a class="w-25 me-3 text-decoration-none">All</a>
-                <a class="w-25 me-3 text-decoration-none">Completed</a>
-                <a class="w-50 ms-3 text-decoration-none">Clear all</a>
+                <a class="allTasks w-25 me-3 text-decoration-none">All</a>
+                <a class="completedTasks w-25 me-3 text-decoration-none">Completed</a>
+                <a class="clearAllTasks w-50 ms-3 text-decoration-none">Clear all</a>
             </div>
         </div>
     </div>

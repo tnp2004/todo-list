@@ -1,18 +1,27 @@
 const todoBox = document.querySelector(".todo-space");
+const clearAllTasksBtn = document.querySelector(".clearAllTasks");
 let allTasks = [];
+let completedTasksArr = [];
 
-const addToDoList = () => {
+const addTaskToArr = () => {
     let boxsColor = document.querySelector(".color-input").value;
     let tasks = document.querySelector(".input-task").value;
+    totalTasks(tasks, boxsColor)
+    clearInput();
+    if (tasks) addToDoList();
+}
 
-   if (tasks) {
+const addToDoList = () => {
+    todoBox.innerHTML = '';
+    for (task of allTasks) {
+        console.log(allTasks)
         const todoElement = document.createElement("div");
-        todoElement.classList.add("border", "border-1", "p-3", "w-100", "d-flex", "justify-content-between");
-        todoElement.style.backgroundColor = boxsColor;
+        todoElement.classList.add("parent-box", "border", "border-1", "p-3", "w-100", "d-flex", "justify-content-between");
+        todoElement.style.backgroundColor = task[1]; // color
 
         const taskElement = document.createElement("div");
-        taskElement.classList.add("my-auto");
-        taskElement.innerHTML = tasks;
+        taskElement.classList.add("task-name", "my-auto");
+        taskElement.innerHTML = task[0]; // task name
 
         const deleteBtnElement = document.createElement("div");
         deleteBtnElement.classList.add("delete", "fw-bold", "fs-5")
@@ -21,15 +30,44 @@ const addToDoList = () => {
         todoElement.append(taskElement, deleteBtnElement);
         todoBox.prepend(todoElement);
 
-        totalTasks(tasks)
-        clearInput();
-   }
+        doDelete(deleteBtnElement, task);
+        completedTasks(taskElement)
+    }
 }
 
-const totalTasks = (task) => {
-   if (task) {
-        allTasks.push(task);
+const completedTasks = (task) => {
+    task.addEventListener("click", () => {
+        task.classList.toggle("completed");
+    })
+}
+
+const doDelete = (deleteBtnElement, tasks) => {
+    deleteBtnElement.addEventListener("click", () => {
+        deleteBtnElement.parentNode.remove();
+
+        // delete data in array
+        allTasks.findIndex(task => {
+            if (task === tasks) {
+                allTasks.splice(allTasks.indexOf(task), 1);
+                totalTasks();
+            }
+        });
+    })
+}
+
+const clearAllTasks = () => {
+    allTasks = []
+    totalTasks();
+    addToDoList();
+}
+
+const totalTasks = (task, color) => {
+   if (task && color) {
+        const taskObj = [task, color];
+        allTasks.push(taskObj);
    }
+   
+   // tasks counter
    let tasksCounter = allTasks.length;
    document.querySelector(".todo-total").innerHTML = tasksCounter + " tasks left";
 }
@@ -41,6 +79,8 @@ const clearInput = () => {
 
 document.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
-        addToDoList();
+        addTaskToArr();
     } 
 })
+
+clearAllTasksBtn.addEventListener("click", clearAllTasks)
