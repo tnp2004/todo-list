@@ -6,12 +6,13 @@ let completedTasksArr = [];
 const addTaskToArr = () => {
     let boxsColor = document.querySelector(".color-input").value;
     let tasks = document.querySelector(".input-task").value;
-    totalTasks(tasks, boxsColor)
+    let isCompleted = false
+    totalTasks(tasks, boxsColor, isCompleted)
     clearInput();
     if (tasks) addToDoList();
 }
 
-const addToDoList = () => {
+const addToDoList = (isCompleted) => {
     todoBox.innerHTML = '';
     for (task of allTasks) {
         console.log(allTasks)
@@ -27,6 +28,10 @@ const addToDoList = () => {
         deleteBtnElement.classList.add("delete", "fw-bold", "fs-5")
         deleteBtnElement.innerHTML = "X";
 
+        console.log(task[2])
+        if (task[2]) {
+            task.classList.add("completed")
+        }
         todoElement.append(taskElement, deleteBtnElement);
         todoBox.prepend(todoElement);
 
@@ -38,6 +43,12 @@ const addToDoList = () => {
 const completedTasks = (task) => {
     task.addEventListener("click", () => {
         task.classList.toggle("completed");
+        allTasks.findIndex(task => {
+            if (task[0] === task.innerHTML) {
+                allTasks[allTasks.indexOf(task)][2] = !allTasks[allTasks.indexOf(task)][2];
+                console.log(task)
+            }
+        })
     })
 }
 
@@ -61,9 +72,9 @@ const clearAllTasks = () => {
     addToDoList();
 }
 
-const totalTasks = (task, color) => {
+const totalTasks = (task, color, isCompleted) => {
    if (task && color) {
-        const taskObj = [task, color];
+        const taskObj = [task, color, isCompleted];
         allTasks.push(taskObj);
    }
    
