@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+  <title>Dothislist</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+    * {
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    body {
+        background-image: url("../images/wallpaper-1.svg");
+    }
+    </style>
+</head>
+<body>
+    <div class="container bg-white w-2/4 flex flex-col justify-center rounded border-2 border-slate-600 mx-auto mt-24 lg:p-4 sm:p-2">
+
+        <div class="header">
+            <h1 class="text-5xl font-bold text-center p-2 tracking-widest">Dothislist</h1>
+            <hr class="my-4">
+        </div>
+        <div class="w-4/5 mx-auto">
+            <div class="einput-box mx-auto w-full flex lg:flex-row sm:flex-col gap-2 mb-6">
+                <input type="text" class="border-solid border-2 p-3 h-10 lg:w-10/12 focus:border-slate-500 focus:outline-none" placeholder="things to do...">
+                <button class="border rounded h-10 lg:w-2/12 lg:w-2/12 bg-blue-400 hover:bg-blue-500 text-white font-black text-4xl">+</button>
+            </div>
+            <div class="todo-box mx-auto">
+                <ul>
+                    <li class="flex justify-between border-2 rounded bg-slate-100 hover:bg-slate-200 w-full py-2 px-5 mb-4">
+                        <div class="left p-1">
+                            <input type="checkbox" class="mr-3 scale-150 focus:outline-none">
+                            <label class="text-xl">title1</label>
+                        </div>
+                        <div class="right">
+                            <button class="border-2 py-1 px-2 hover:bg-rose-700 hover:text-white font-black rounded">X</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
