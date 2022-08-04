@@ -2,6 +2,8 @@ const listsBox = document.getElementById("todolistsBox")
 const btnAddList = document.getElementById("btnAddList")
 const inputAddList = document.getElementById("inputAddList")
 
+const TODOLISTS = [{title:"title 1", describe:"describe 1", created:"04/08/2022", isDone: false}]
+
 const createElementTodoList = (title = "no title", describe = "no description") => {
 
     const wrapperTodo = document.createElement("a")
@@ -18,6 +20,14 @@ const createElementTodoList = (title = "no title", describe = "no description") 
     heading.classList.add("mb-1")
     heading.innerHTML = title
 
+    const deleteBtn = document.createElement("button")
+    deleteBtn.classList.add("btn", "btn-danger", "btn-sm")
+    deleteBtn.innerHTML = "Delete"
+    deleteBtn.addEventListener("click", (e) => {
+        e.stopPropagation()
+        // do some function to delete the list
+    })
+
     const date = document.createElement("small")
     const getNowDate = `Created: ${new Date().getDate()}/${(new Date().getMonth() + 1)}/${new Date().getFullYear()}`
     date.innerHTML = getNowDate
@@ -26,8 +36,8 @@ const createElementTodoList = (title = "no title", describe = "no description") 
     description.classList.add("mb-1")
     description.innerHTML = describe
 
-    titleTodo.append(heading, date)
-    wrapperTodo.append(titleTodo, description)
+    titleTodo.append(heading, deleteBtn)
+    wrapperTodo.append(titleTodo, description, date)
     listsBox.append (wrapperTodo)
 }
 
