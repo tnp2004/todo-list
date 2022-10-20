@@ -31,7 +31,7 @@
             display: none;
         }
 
-        .wrap-todo {
+        .wrap-todo, #allTasks, #done, #clearAll {
             cursor: pointer;
         }
 
@@ -44,7 +44,7 @@
     <div class="container bg-light p-3">
         <div class="title text-center fs-1 bg-dark text-white col-12 col-md-6 mx-auto">todolist</div>
         <div class="d-flex col-12 col-md-6 mx-auto mt-3">
-            <input id="inputAddList" type="text" class="form-control inline-block rounded-0">
+            <input id="inputAddList" type="text" class="form-control inline-block rounded-0 text-center" placeholder="something that you have to do . . .">
             <button id="btnAddList" class="btn btn-primary rounded-0">add</button>
         </div>
         <ul id="menu" class="list-group list-group-horizontal col-12 col-md-6 mx-auto text-center mt-5">
