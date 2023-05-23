@@ -3,3 +3,5 @@ interface Todo {
     todo: string
     done: boolean
 }
+
+type filter = "all" | "todo" | "completed"

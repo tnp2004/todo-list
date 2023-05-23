@@ -21,7 +21,7 @@
 
 <button
   on:click={toggleIsdone}
-  class="bg-slate-700 bg-opacity-80 px-2 my-1 w-full flex items-center justify-center align-middle"
+  class="bg-slate-700 bg-opacity-80 px-2 my-1 w-full flex items-center justify-center align-middle drop-shadow-md"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
