@@ -15,7 +15,7 @@
 <div class="flex my-2">
   <input
     bind:value={inputValue}
-    class="w-5/6 rounded-l-sm p-1 focus:outline-none text-center"
+    class="w-5/6 rounded-l-sm p-1 focus:outline-none text-center bg-white text-slate-800 font-bold"
     placeholder="todo . . ."
     type="text"
   />

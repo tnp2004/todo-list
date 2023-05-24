@@ -50,5 +50,5 @@
     {/each}
   {/if}
 {:else}
-  <h2 class="font-bold text-slate-600">no todo</h2>
+  <h2 class="font-bold text-slate-600 my-5">no todo</h2>
 {/if}

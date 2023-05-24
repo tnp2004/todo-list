@@ -8,9 +8,9 @@
 
   const toggleIsdone = () => {
     dispatch("toggleDone", {
-      id
-    })
-  }
+      id,
+    });
+  };
 
   const removeTodo = () => {
     dispatch("remove", {
@@ -19,9 +19,15 @@
   };
 </script>
 
+<style>
+  :root {
+  color-scheme: dark;
+}
+</style>
+
 <button
   on:click={toggleIsdone}
-  class="bg-slate-700 bg-opacity-80 px-2 my-1 w-full flex items-center justify-center align-middle drop-shadow-md"
+  class="bg-slate-700 bg-opacity-80 px-2 my-1 w-full flex items-center justify-center align-middle drop-shadow-md hover:bg-slate-700"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
